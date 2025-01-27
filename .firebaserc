@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "deneme-215ea"
+  },
+  "targets": {
+    "deneme-215ea": {
+      "hosting": {
+        "baabstoree": [
+          "baabstoree"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

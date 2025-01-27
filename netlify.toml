@@ -1,0 +1,42 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  node_version = "18"
+
+[context.production.environment]
+  VITE_SUPABASE_URL = "https://mggcufjzqpevkkihidmb.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1nZ2N1Zmp6cXBldmtraWhpZG1iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY2OTU0MTQsImV4cCI6MjA1MjI3MTQxNH0.nQ-hf6OUEEp_lzQ_8um5lg3ojqSHVkvPU5wa5BixLZY"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' https://mggcufjzqpevkkihidmb.supabase.co; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+    Cache-Control = "public, max-age=31536000"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  publish = "dist"
+  framework = "#custom" 
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+
+[[plugins]]
+  package = "netlify-plugin-inline-critical-css" 
